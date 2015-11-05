@@ -1,0 +1,15 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "description": "Web services which analyze realtor.com",
+  "author": "Jai Rajagopalan",
+  "main": "app.js",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:snowpup68/Domus.git"
+  },
+  "dependencies": {
+    "lodash": "*"
+  }
+}
