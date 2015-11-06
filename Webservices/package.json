@@ -10,5 +10,7 @@
     "url": "git@github.com:snowpup68/Domus.git"
   },
   "dependencies": {
+    "request": "*",
+    "fs": "*"
   }
 }
