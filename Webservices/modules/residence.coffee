@@ -5,5 +5,9 @@ class @Residence
 
   getId: () -> @id
 
+  getURL: () -> @url
+
+  getCachePath: (path, ext) -> "#{path}#{@id}#{ext}"
+
   save: ->
     console.log "save #{@type} #{@url}"
