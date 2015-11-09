@@ -4,10 +4,15 @@ class @Residence
     @type = "all"
 
   getId: () -> @id
-
   getURL: () -> @url
 
-  getCachePath: (path, ext) -> "#{path}#{@id}#{ext}"
+  load: ($) ->
+    props = {}
+    ($ 'span[itemprop]').map (i, item) ->
+      props[($ item).attr('itemprop')] = ($ item).text()
+    @props = props
+    tabOverview = $ '#tab-overview'
+    console.log tabOverview
 
   save: ->
     console.log "save #{@type} #{@url}"

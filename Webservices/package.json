@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "request": "*",
-    "fs": "*"
+    "fs": "*",
+    "promise": "*",
+    "cheerio": "*"
   }
 }
