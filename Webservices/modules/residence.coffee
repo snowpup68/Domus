@@ -7,12 +7,10 @@ class @Residence
   getURL: () -> @url
 
   load: ($) ->
-    props = {}
-    ($ 'span[itemprop]').map (i, item) ->
-      props[($ item).attr('itemprop')] = ($ item).text()
-    @props = props
-    tabOverview = $ '#tab-overview'
-    console.log tabOverview
+    @props = {}
+    @props[($ item).attr('itemprop')] = ($ item).text() for item in ($ '.property-caption span[itemprop]')
+    @props[item.children[0].children[0].data.toLowerCase()] = item.children[1].children[0].data for item in($ '#GeneralInfo ul li')
+    delete @props.seller
 
   save: ->
     console.log "save #{@type} #{@url}"
