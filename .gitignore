@@ -5,3 +5,4 @@ Webservices/data/*
 .DS_Store
 Webservices/node_modules
 Webservices/.idea
+*.js.map

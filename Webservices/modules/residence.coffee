@@ -23,7 +23,7 @@ class @Residence
 
     delete props[name] for name in ['seller']
 
-  save: (collection, item, callback) ->
+  save: (collection, callback) ->
     props = @props
     collection.find {mlsid: props.mlsid, price: props.price}, (err, items) ->
       if items.length <= 0

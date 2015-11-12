@@ -32,7 +32,7 @@ dbTasks = items.map (item) ->
   (callback) ->
     fs.readFile "#{path}#{item.getId()}#{ext}", (error, html) ->
       item.loadSync cheerio.load html
-      item.save db.residences, item, callback
+      item.save db.residences, callback
 
 
 async.parallel fileTasks, (err) ->
