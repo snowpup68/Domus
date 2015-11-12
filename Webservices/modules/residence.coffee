@@ -1,9 +1,11 @@
 class @Residence
   constructor: (@url) ->
     @mlsid = (@url.match /_(M[0-9]+-[0-9]+)$/)[1]
+    @price = 0
 
   getId: () -> @mlsid
   getURL: () -> @url
+  getPrice: () -> @price
 
   load: ($) ->
     props = @

@@ -28,13 +28,17 @@ fileTasks = items.filter (item) -> not fs.existsSync "#{path}#{item.getId()}#{ex
         .pipe fs.createWriteStream "#{path}#{item.getId()}#{ext}"
         .on 'finish', () -> callback()
 
-async.parallel fileTasks, (err, results) ->
-  loadTasks = items.map (item) ->
-    (callback) ->
-      fs.readFile "#{path}#{item.getId()}#{ext}", (error, html) ->
-        item.load cheerio.load html
-        db.residences.save item, (err, saved) ->
+loadTasks = items.map (item) ->
+  (callback) ->
+    fs.readFile "#{path}#{item.getId()}#{ext}", (error, html) ->
+      item.load cheerio.load html
+
+      db.residences.find {mlsid: item.getId(), price: item.getPrice()}, (err, residences) ->
+        if residences.length <= 0
+          db.residences.save item, (err, saved) -> callback()
+        else
           callback()
 
-  async.parallel loadTasks, (err, results) ->
+async.parallel fileTasks, (err) ->
+  async.parallel loadTasks, (err) ->
     db.close()
