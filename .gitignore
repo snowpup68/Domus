@@ -1,3 +1,7 @@
 Webservices/app.js
 Webservices/modules/house.js
 Webservices/modules/residence.js
+Webservices/data/*
+.DS_Store
+Webservices/node_modules
+Webservices/.idea
