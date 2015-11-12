@@ -24,21 +24,17 @@ items = (new Residence url for url in urls)
 fileTasks = items.filter (item) -> not fs.existsSync "#{path}#{item.getId()}#{ext}"
   .map (item) ->
     (callback) ->
-      request item
+      request item.getURL()
         .pipe fs.createWriteStream "#{path}#{item.getId()}#{ext}"
         .on 'finish', () -> callback()
 
-loadTasks = items.map (item) ->
+dbTasks = items.map (item) ->
   (callback) ->
     fs.readFile "#{path}#{item.getId()}#{ext}", (error, html) ->
-      item.load cheerio.load html
+      item.loadSync cheerio.load html
+      item.save db.residences, item, callback
 
-      db.residences.find {mlsid: item.getId(), price: item.getPrice()}, (err, residences) ->
-        if residences.length <= 0
-          db.residences.save item, (err, saved) -> callback()
-        else
-          callback()
 
 async.parallel fileTasks, (err) ->
-  async.parallel loadTasks, (err) ->
+  async.parallel dbTasks, (err) ->
     db.close()
