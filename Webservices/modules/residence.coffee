@@ -1,8 +1,8 @@
 class @Residence
   constructor: (@url) ->
-    @id = (@url.match /_(M[0-9]+-[0-9]+)$/)[1]
+    @mlsid = (@url.match /_(M[0-9]+-[0-9]+)$/)[1]
 
-  getId: () -> @id
+  getId: () -> @mlsid
   getURL: () -> @url
 
   load: ($) ->
