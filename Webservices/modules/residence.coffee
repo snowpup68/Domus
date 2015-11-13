@@ -22,6 +22,7 @@ class @Residence
       props[name.toLowerCase().replace pattern, '_'] = value.trim() if value?
 
     delete props[name] for name in ['seller']
+    @props.timestamp = new Date()
 
   save: (collection, callback) ->
     props = @props
