@@ -12,6 +12,7 @@
   "dependencies": {
     "async": "*",
     "cheerio": "*",
+    "feed-read": "*",
     "fs": "*",
     "mongojs": "*",
     "request": "*"
