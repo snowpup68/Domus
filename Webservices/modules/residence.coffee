@@ -23,6 +23,7 @@ class @Residence
 
     delete props[name] for name in ['seller']
     @props.timestamp = new Date()
+    @
 
   save: (collection, callback) ->
     props = @props
@@ -32,3 +33,4 @@ class @Residence
           callback()
       else
         callback()
+    @
